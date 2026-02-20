@@ -104,7 +104,11 @@ const Onboarding = ({ onSelectTemplate }) => {
 
             {/* Footer */}
             <footer className="px-12 py-8 border-t border-gray-100 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-gray-400 font-medium">
-                <p>© 2026 CV Builder. Todos los derechos reservados.</p>
+                <p>
+                    © 2026 CV Builder. Todos los derechos reservados.
+                    <span className="mx-2">|</span>
+                    Creado por <a href="https://portafolio-lemon-psi.vercel.app" target="_blank" rel="noopener noreferrer" className="font-bold text-[#1e3a5f] hover:underline decoration-[#00c896] underline-offset-4 transition-all">Emanuel1522</a>
+                </p>
                 <div className="flex items-center gap-8">
                     <a href="#" className="hover:text-[#1e3a5f]">Privacidad</a>
                     <a href="#" className="hover:text-[#1e3a5f]">Términos y Condiciones</a>

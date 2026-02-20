@@ -164,7 +164,7 @@ const FormPanel = ({
                         placeholder="Describe brevemente tu perfil profesional..."
                     />
                     <div className="text-right text-[11px] font-bold text-gray-400">
-                        {cvData.perfil.length} / 500
+                        {cvData.perfil.length}
                     </div>
                 </div>
             </SectionBlock>
@@ -374,6 +374,21 @@ const FormPanel = ({
                     </SectionBlock>
                 );
             })}
+
+            {/* Developer Credit in Editor */}
+            <div className="pt-12 pb-8 text-center border-t border-gray-100">
+                <p className="text-[11px] font-bold text-gray-300 uppercase tracking-widest">
+                    Creado por{' '}
+                    <a
+                        href="https://portafolio-lemon-psi.vercel.app"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-gray-400 hover:text-[#1e3a5f] transition-colors"
+                    >
+                        Emanuel1522
+                    </a>
+                </p>
+            </div>
         </div>
     );
 };
