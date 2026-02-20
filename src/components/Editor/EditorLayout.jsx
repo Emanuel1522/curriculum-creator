@@ -68,12 +68,21 @@ const EditorLayout = ({
             {/* Top Bar */}
             <header className="h-16 bg-white border-b border-gray-100 px-6 flex items-center justify-between sticky top-0 z-50">
                 <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center text-[#1e3a5f]">
-                        <Laptop size={18} />
+                    <button
+                        onClick={handleBack}
+                        className="p-2.5 bg-gray-50 text-gray-700 rounded-xl md:hidden flex items-center justify-center hover:bg-gray-100 active:scale-95 transition-all"
+                        aria-label="Volver"
+                    >
+                        <ArrowLeft size={20} />
+                    </button>
+                    <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center text-[#1e3a5f]">
+                            <Laptop size={18} />
+                        </div>
+                        <span className="text-xl font-extrabold text-[#112233]">
+                            CVBuilder
+                        </span>
                     </div>
-                    <span className="text-xl font-extrabold text-[#112233]">
-                        CVBuilder
-                    </span>
                 </div>
 
                 {/* Desktop Controls */}
@@ -128,7 +137,7 @@ const EditorLayout = ({
                 </div>
 
                 {/* Preview Panel */}
-                <div className={`${activeTab === 'preview' ? 'flex' : 'hidden'} md:flex flex-1 bg-[#EBEBEB] overflow-y-auto items-center justify-center p-4 md:p-8`}>
+                <div className={`${activeTab === 'preview' ? 'flex' : 'hidden'} md:flex flex-1 bg-[#EBEBEB] overflow-y-auto items-center justify-center p-0 md:p-8`}>
                     <PreviewPanel cvData={cvData} updateField={updateField} />
                 </div>
             </div>

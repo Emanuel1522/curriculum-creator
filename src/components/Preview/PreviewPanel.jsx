@@ -3,13 +3,14 @@ import TemplateMinimal from './TemplateMinimal';
 import TemplateVisual from './TemplateVisual';
 import { useOverflow } from '../../hooks/useOverflow';
 import OverflowWarning from '../Editor/OverflowWarning';
-import { Search, ZoomIn, ZoomOut } from 'lucide-react';
+import { Search, ZoomIn, ZoomOut, Palette, X } from 'lucide-react';
 
 const PreviewPanel = ({ cvData, updateField }) => {
     const previewRef = useRef(null);
     const exportRef = useRef(null);
     const [zoom, setZoom] = useState(0.7);
     const [numPages, setNumPages] = useState(1);
+    const [showControls, setShowControls] = useState(window.innerWidth > 768);
     const PAGE_HEIGHT = 1123;
     const PAGE_WIDTH = 794;
     const MARGIN_TOP = 60;
@@ -21,10 +22,12 @@ const PreviewPanel = ({ cvData, updateField }) => {
         const calculateZoom = () => {
             const width = window.innerWidth;
             if (width < 768) {
-                // For mobile, leave some margin (around 32px total)
-                const availableWidth = width - 32;
+                // Since parent padding is now 0 on mobile, use full width
+                // Leave 4px safety gap only
+                const availableWidth = width - 4;
                 const targetZoom = availableWidth / PAGE_WIDTH;
-                setZoom(Math.min(targetZoom, 0.6)); // Max auto-zoom for mobile is 0.6
+                setZoom(targetZoom);
+                setShowControls(false); // Hide on mobile by default
             } else if (width < 1024) {
                 setZoom(0.65);
             } else {
@@ -78,9 +81,18 @@ const PreviewPanel = ({ cvData, updateField }) => {
     ];
 
     return (
-        <div className="relative flex flex-col items-center w-full h-full min-h-screen py-8 overflow-x-hidden">
+        <div className="relative flex flex-col items-center w-full min-h-full py-8 overflow-x-hidden bg-[#F5F5F7]">
+            {/* Floating Toggle Button */}
+            <button
+                onClick={() => setShowControls(!showControls)}
+                className={`fixed top-24 right-6 z-50 p-3 rounded-full shadow-2xl transition-all duration-300 ${showControls ? 'bg-gray-800 text-white rotate-90 scale-90' : 'bg-white text-gray-800 hover:scale-110'}`}
+                title={showControls ? "Cerrar controles" : "Personalizar diseño"}
+            >
+                {showControls ? <X size={20} /> : <Palette size={20} />}
+            </button>
+
             {/* Floating Controls Area (Right) */}
-            <div className="fixed top-24 right-6 flex flex-col gap-4 z-40">
+            <div className={`fixed top-36 right-6 flex flex-col gap-4 z-40 transition-all duration-500 ease-in-out ${showControls ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20 pointer-events-none'}`}>
                 {/* Color Picker for Template Visual */}
                 {cvData.template === 'visual' && (
                     <div className="bg-white p-2.5 rounded-2xl shadow-xl border border-gray-100 flex flex-col gap-2.5">
