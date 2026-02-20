@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --font-nunito: "Nunito", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --font-lato: "Lato", sans-serif;
+  --size-a4-height: 1123px;
+  --size-a4-width: 794px;
+}
+
+:root {
+  font-family: 'Nunito', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #F5F5F7;
+  color: #112233;
+}
+
+/* Custom Scrollbar for premium feel */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+@layer components {
+  .cv-preview-container {
+    box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.15), 0 20px 50px -10px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Smooth transitions for all interactive elements */
+  button,
+  input,
+  textarea,
+  div {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* Ensure Google Fonts are recognizable */
+.font-nunito {
+  font-family: 'Nunito', sans-serif;
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-lato {
+  font-family: 'Lato', sans-serif;
+}
